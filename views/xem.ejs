@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .ListProd {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        .table {
+
+            display: inline-block;
+            font-size: 15px;
+            overflow: auto;
+        }
+
+        .table thead th {
+            padding: 0px 0px 10px 0px;
+            vertical-align: top;
+            background-color: palegreen;
+            border: solid 1px;
+            text-align: center;
+
+        }
+
+        .table th,
+        td {
+            border: solid 1px;
+        }
+
+        .upTable {
+            display: block;
+            text-align: center;
+        }
+
+        .back {
+            display: inline-block;
+            border: solid 1px;
+            border-radius: 5px;
+            font-size: 25px;
+            font-weight: bold;
+            border-color: black;
+            background-color: khaki;
+            padding: 0px 5px;
+        }
+
+        .back:hover {
+            background-color: darkcyan;
+            color: white;
+            transition: 0.5s;
+        }
+
+        .back a {
+            text-decoration: none;
+            border-color: black;
+            background-color: khaki;
+        }
+
+        .back a:hover {
+            background-color: darkcyan;
+            color: white;
+            transition: 0.5s;
+        }
+
+        .search {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 25px;
+            transition: 0.4s;
+            position: relative
+        }
+
+        .searchbox {
+            display: block;
+            border-radius: 20px;
+            padding: 10px;
+            width: 30%;
+        }
+
+        .btnSearch {
+            padding: 0px;
+            margin-left: 15px;
+        }
+
+        .btn {
+            border-color: black;
+            background-color: khaki;
+            color: black;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .btn:hover {
+            overflow: hidden;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="ListProd">
+        <div class="back">
+            <a type="Button" href="http://localhost:3000/"> <i class="far fa-hand-point-left"
+                    style="padding-right: 5px;"></i>Back</a>
+        </div>
+        <div class="upTable">
+            <h1>Danh sách sản phẩm</h1>
+            <div class="search">
+                <form action="" method="get"
+                    style=" width: 100%; display: flex; height: 50px; justify-content: center; align-items: center; ">
+                    <input class="searchbox" name="search" type="text" value=""
+                        placeholder="Nhập sản phẩm cần tìm kiếm">
+                    <div class="btnSearch">
+                        <button style="display: block; padding: 5px; margin-bottom: 3px;" type="submit"
+                            class="btn btn-primary">
+                            Tìm kiếm
+                            <i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <table class="table">
+            <div class="tableData">
+                <thead>
+                    <div id="dataProd">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Thời gian trồng</th>
+                            <th scope="col">Phân bón</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Thương hiệu</th>
+                            <th scope="col">Loại chứng nhận</th>
+                            <th scope="col">Xác nhận</th>
+                            <th scope="col">Địa chỉ ví</th>
+                            <th scope="col">Ngày upload</th>
+                        </tr>
+                    </div>
+                </thead>
+                <%sanphams.forEach(sanpham=> {%>
+                    <tr>
+                        <th scope="row">
+                            <%= sanpham._id %>
+                        </th>
+                        <td>
+                            <%= sanpham.Tensanpham %>
+                        </td>
+                        <td>
+                            <%= sanpham.Thoigiantrong %>
+                        </td>
+                        <td>
+                            <%= sanpham.PhanBon %>
+                        </td>
+                        <td>
+                            <%= sanpham.Soluong %>
+                        </td>
+                        <td>
+                            <%= sanpham.Gia %>
+                        </td>
+                        <td>
+                            <%= sanpham.Mota %>
+                        </td>
+                        <td>
+                            <%= sanpham.Thuonghieu %>
+                        </td>
+                        <td>
+                            <%= sanpham.Loaichungnhan %>
+                        </td>
+                        <td>
+                            <%= sanpham.Xacnhan %>
+                        </td>
+                        <td>
+                            <%= sanpham.DiachiVi %>
+                        </td>
+                        <td>
+                            <%= sanpham.NgayUpload %>
+                        </td>
+                    </tr>
+                    <%})%>
+            </div>
+
+        </table>
+    </div>
+</body>
+
+</html>

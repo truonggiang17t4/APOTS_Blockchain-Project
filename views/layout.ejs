@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://localhost:3000" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./process.js"></script>
+    <script src="./scripts/web3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <style>
+        .footer {
+            zoom: 90%;
+        }
+
+        #topic {
+            height: 338px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url(./images/background_sp.jpg);
+            background-size: cover;
+        }
+
+        .text-topic {
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 70px;
+            line-height: 338px;
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+            white-space: nowrap;
+            overflow: hidden;
+            -webkit-text-stroke: 1px black;
+        }
+
+        .DSrealtime {
+            display: flex;
+            height: auto;
+            width: 45%;
+            background: linear-gradient(to bottom, #ACB6E5, #74ebd5);
+            padding: 10px;
+            margin-right: 10px;
+            height: 100%;
+            overflow: visible;
+            margin-top: 48px;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+
+        #tbDS {
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #dong1 td {
+            width: 50%;
+            padding: 10px;
+        }
+
+        #connectMM,
+        .wellcome {
+            display: none;
+            background: #d9d9d9;
+            padding: 5px 10px;
+            border: solid 1px;
+            border-radius: 4px;
+        }
+
+        .show {
+            display: inline-block !important;
+        }
+
+        .content-contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            background: url("/images/AboutBackground.png");
+            zoom: 80%;
+        }
+
+        .content-contact-img {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .content-contact-img img {
+            width: 60%;
+        }
+
+        .content-contact-detail {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .content-contact-detail span:first-child {
+            color: #C7C0C1;
+            font-size: 1.5rem;
+        }
+
+        .content-contact-detail span:nth-child(2) {
+            color: #C7C0C1;
+            font-size: 20px;
+            font-weight: 700;
+            display: block;
+            box-sizing: border-box;
+            padding: 0px 100px;
+            text-align: center;
+        }
+
+        .content-contact-detail span:nth-child(3) {
+            width: 50%;
+            color: orange;
+            height: 2px;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 25%;
+            text-align: center;
+        }
+
+        .content-contact-detail span:nth-child(4) {
+            width: 40%;
+            color: orange;
+            height: 2px;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 25%;
+            text-align: center;
+        }
+
+        .content-contact-detail span:nth-child(5) {
+            width: 30%;
+            color: orange;
+            height: 2px;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 25%;
+            text-align: center;
+        }
+
+        .content-contact-detail span:nth-child(6) {
+            text-align: center;
+            box-sizing: border-box;
+            padding: 20px 85px;
+            font-size: 20px;
+        }
+
+        .content-rules-img img {
+            width: 100%;
+        }
+
+        .content-box-rules-img {
+            width: 30%;
+        }
+
+        .content-box-rules-detail {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #eaf5f8;
+        }
+
+        .content-box-rules-img img {
+            width: 100%;
+        }
+
+        .content-box-rules {
+            width: 80%;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 175px;
+            right: 10%;
+        }
+
+        .content-rules {
+            padding-bottom: 300px;
+            position: relative;
+            background: #e6fdfeb3;
+        }
+
+        .content-box-rules-detail a,
+        .hotline-contact-us a {
+            background-color: orange;
+            outline: none;
+            font-weight: 600;
+            color: white;
+            border: 1px solid;
+        }
+
+        .hotline-contact-us a:hover,
+        .content-box-rules-detail a:hover {
+            background: white !important;
+            color: orange;
+            border: 1px solid;
+        }
+
+        .content-box-rules-detail span {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            clear: both;
+            width: 100%;
+            height: 300px;
+        }
+
+        .above {
+            border-top: 20px solid rgba(196, 196, 96, 0.877);
+            border-bottom: 20px solid rgba(196, 196, 96, 0.877);
+            display: flex;
+            height: 100px;
+            background-color: rgb(86, 226, 86);
+            text-align: center;
+            padding: auto;
+            font-size: 20px;
+        }
+
+        #ab {
+            width: 32%;
+            margin: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+            border-right: 1px solid black;
+
+        }
+
+        .btnc {
+            margin-top: 10px;
+            margin-left: 120px;
+            width: 170px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom {
+            height: 200px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .t1 {
+            display: flex;
+            text-align: center;
+        }
+
+        #t2 {
+            width: 50%;
+            padding: 13px;
+            font-size: 13px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        /* end footer */
+
+        /* css contact */
+        .contentll {
+            width: 100%;
+            height: 1200px;
+            margin-top: 25px;
+        }
+
+        .contact-wrapper {
+            width: 100%;
+            height: 800px;
+            padding-left: 18%;
+            display: flex;
+            border-radius: 10px;
+        }
+
+        .trai {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            background-image: url(/images/bg-01.jpg);
+            width: 443px;
+            height: 742px;
+            box-shadow: 0px 10px 20px gray;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trai::before {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            content: " ";
+            display: block;
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .txt1 {
+            font-family: Poppins-Regular;
+            font-size: 20px;
+            line-height: 1.5;
+            color: #fff;
+            padding-right: 40px;
+            padding-top: 60px;
+        }
+
+        .txt3 {
+            font-family: Poppins-Regular;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #00ad5f;
+            padding-right: 40px;
+        }
+
+        .dis-flex {
+            padding-top: 70px;
+            text-align: center;
+        }
+
+        .phai {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            height: 742px;
+            width: 957px;
+            border: 1px solid rgba(68, 65, 65, 0.651);
+            box-shadow: 0px 10px 20px gray;
+            background: rgba(192, 192, 192, 0.473);
+            color: rgb(0, 0, 0);
+            position: relative;
+        }
+
+        .phai .hinh {
+            position: absolute;
+            width: 209px;
+            height: 276px;
+            bottom: 20px;
+            right: 50px;
+        }
+
+        .phai h2 {
+            position: absolute;
+            width: 307px;
+            height: 60px;
+            top: 20px;
+            left: 50px;
+            border-bottom: 1px solid #000000;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 36px;
+            line-height: 42px;
+            text-transform: capitalize;
+        }
+
+        .text {
+            position: absolute;
+            width: 765px;
+            height: 236px;
+            top: 90px;
+            left: 50px;
+        }
+
+        .nd {
+            display: flex;
+            padding: 25px;
+        }
+
+        .txt4 {
+            width: 200px;
+            font-family: Poppins-Regular;
+            font-size: 25px;
+            text-align: left;
+        }
+
+        .txt5 {
+            font-weight: bold;
+            text-align: left;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 22px;
+        }
+
+        .text2 {
+            position: absolute;
+            width: 700px;
+            height: 300px;
+            bottom: 30px;
+            left: 50px;
+        }
+
+        .d-flex {
+            display: flex;
+            width: 100%;
+        }
+
+        .formInput {
+            padding: 48px 20px 48px 48px;
+            display: flex;
+            width: 65%
+        }
+
+        .ketnoiMM {
+            padding: 0px 0px 5px 15px;
+        }
+
+        .leftForm {
+            width: 30%;
+        }
+
+        .rightForm {
+            width: 70%;
+            border-right: greenyellow;
+            border-right-style: dashed;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        /*-----------------------------*/
+        .menu {
+            zoom: 90%;
+            width: 100%;
+            height: 70px;
+        }
+
+        .menutop {
+            background-color: rgb(220, 247, 220);
+        }
+
+        .menu .menutop .menuright .nav-link {
+            text-transform: uppercase;
+            /* đổi sang ký tự hoa*/
+            padding: 10px 25px !important;
+            font-size: 15px;
+            font-family: 'Roboto Slab'serif;
+            color: whitesmoke;
+            transition: 0.5s;
+        }
+
+        .menu .menutop .menuright .nav-link:hover {
+            color: rgb(0, 0, 0);
+            background-color: silver;
+        }
+
+        .menu .menutop .menuright li.active .nav-link {
+            color: rgb(0, 0, 0);
+        }
+
+        .menu .menutop .menuright .nav-link {
+            color: rgb(0, 0, 0);
+        }
+
+        .menu .menutop .menuright .nav-link.nutsignup {
+            border-color: rgb(0, 0, 0);
+            padding: 12px 22px;
+            background-color: rgb(21, 109, 224);
+            border-radius: 5%;
+            color: white;
+        }
+
+        .menu .menutop .menuright .nav-link.nutsignup:hover {
+            color: white;
+            border-color: rgb(235, 235, 235);
+            background: rgb(0, 0, 0);
+        }
+
+        .navbar {
+            transition: 0.5s;
+        }
+
+        /* end menu */
+
+        .banner {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            text-align: center;
+            font-weight: bold;
+            padding-top: 150px;
+            padding-left: 35%;
+        }
+
+
+        .banner h1 {
+            border: 1px solid black;
+            width: 50%;
+            background-color: rgb(0, 0, 0);
+            opacity: 60%;
+            border-radius: 5px;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        /* css footer */
+        .footer {
+            clear: both;
+            width: 100%;
+            height: 300px;
+        }
+
+        .above {
+            border-top: 20px solid rgba(196, 196, 96, 0.877);
+            border-bottom: 20px solid rgba(196, 196, 96, 0.877);
+            display: flex;
+            height: 100px;
+            background-color: rgb(86, 226, 86);
+            text-align: center;
+            padding: auto;
+            font-size: 20px;
+        }
+
+        #ab {
+            width: 32%;
+            margin: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+            border-right: 1px solid black;
+
+        }
+
+        .btnc {
+            margin-top: 10px;
+            margin-left: 120px;
+            width: 170px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom {
+            height: 200px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .t1 {
+            display: flex;
+            text-align: center;
+        }
+
+        #t2 {
+            width: 50%;
+            padding: 13px;
+            font-size: 13px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        .Avt {
+            height: 38px;
+            width: 38px;
+            margin-left: 15px;
+            cursor: pointer;
+            background-color: peru;
+            border-radius: 50px;
+
+        }
+
+        .logo {
+            position: relative;
+            width: 100px;
+            height: 60px;
+
+        }
+
+        .logo img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .expand {
+            justify-content: right;
+            padding-bottom: 15px;
+        }
+    </style>
+    <title>APOTS</title>
+</head>
+
+<body>
+    <div class="menu">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top menutop">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://imgur.com/a/dKhfPDh" alt="logo">
+                </a>
+            </div>
+
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mt-2 ml-auto menuright">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">
+                            <i class="bx bxs-home bx-tada"></i>
+                            Trang chủ
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support">
+                            <i class="bx bxs-book-open bx-tada"></i>
+                            Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bill">
+                            <i class="bx bx-cart bx-tada"></i>
+                            Giỏ hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sell">
+                            <i class="bx bxs-shopping-bags bx-tada bx-flip-vertical"></i>
+                            Trở thành người bán hàng
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about_us">
+                            <i class="bx bx-support bx-tada"></i>
+                            Hỗ trợ
+                        </a>
+                    </li>
+                    <div>
+                        <div class="Avt">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container-body" id="root">
+        <div id="topic">
+            <div class="text-topic">Đăng sản phẩm</div>
+        </div>
+        <div class="d-flex">
+            <div class="formInput">
+                <div class="leftForm">
+                    <img src="/images/nongtrai.jpg" alt="Farm" className="background-img"
+                        style=" width: 100%;height: 100%;" />
+                </div>
+                <div class="rightForm">
+                    <div class="ketnoiMM">
+                        <div class="wellcome">
+                            Tài khoản
+                            <b class="account-name">
+                            </b>
+                            đã kết nối !!
+                        </div>
+                        <button id="connectMM" class="show">Kết nối MetaMask</button>
+                    </div>
+                    <div>
+                        <form style=" width: 70%; box-sizing: border-box; padding: 0px 15px;" method="post"
+                            enctype="multipart/form-data">
+                            <div class="">
+                                <div class="Information">
+                                    <input class="form-control" id="txtDiachiVi" type="hidden" name="txtDiachiVi"
+                                        value="" />
+                                    <h1>Thông tin sản phẩm</h1>
+                                    <h6>Những thông tin bên dưới của bạn sẽ được công khai để người mua hàng có thể liên
+                                        lạc trao đổi về sản phẩm</h6>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtTensanpham" type="text"
+                                            placeholder="Tên sản phẩm" />
+                                    </div>
+                                    <h5 style="padding-top: 10px;">Mô tả sản phẩm</h5>
+
+                                    <label class="form-label" style="padding-top: 5px">Thời Gian Trồng: <br />Từ</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtThoigiantrong" type="date"
+                                            placeholder="Thời gian trồng" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Phân Bón:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtPhanBon" type="text"
+                                            placeholder="Phân bón" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Số Lượng:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtSoluong" min="1" type="number"
+                                            placeholder="Số lượng" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Giá:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtGia" min="10000" type="number"
+                                            placeholder="Giá" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Mô tả:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtMota" type="text" maxlength="300"
+                                            placeholder="Mô tả" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Thương hiệu:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtThuonghieu" type="text"
+                                            placeholder="Thương hiệu" />
+                                    </div>
+                                    <label class="form-label" style="padding-top: 5px">Loại chứng nhận:</label>
+                                    <div className="form-group">
+                                        <input class="form-control" id="txtLoaichungnhan" type="text"
+                                            placeholder="Loại chứng nhận" />
+                                    </div>
+                                    <input class="form-control" id="txtXacnhan" type="hidden" name="txtXacnhan"
+                                        value="" />
+
+                                    <div className="form-group">
+                                        <label class="form-label" for="images" class="text-white">Upload image</label>
+                                        <input class="form-control" type="file" name="images" id="images"
+                                            class="form-control-file text-white">
+                                    </div>
+                                    <input style="margin-top:15px ;" class="form-control btn btn-primary" type="button"
+                                        id="btnDangKy" value="Thêm">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="DSrealtime" id="danhsach">
+                <div class="expand">
+                    <a href="/list" class="btn btn-primary">Expand
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div>
+                    <table id="tbDS">
+                        <tr id="dong1">
+                            <td>Address</td>
+                            <td>ID</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="contact">
+        <div class="content-contact">
+            <div class="content-contact-img">
+                <img src="images/img-about-1.png" alt="">
+            </div>
+
+            <div class="content-contact-detail">
+                <span>Về Agricultural Transaction</span>
+                <span>Chúng tôi cung cấp những sản phẩm chất lượng và đáng tin cậy nhất cho bạn</span>
+                <span>__________________________________________</span>
+                <span>______________________________________</span>
+                <span>__________________________________</span>
+                <span>Thông qua công nghệ BlockChain. Mọi sẳn phẩn trên trang web đều được kiểm định chất lượng threo
+                    tiểu chuẩn VietGAP nhằm đảm bảo chất lượng tốt nhất cho mọi sản phẩm</span>
+            </div>
+        </div>
+
+        <div class="content-rules">
+            <div class="content-rules-img">
+                <img src="images/AboutUsContainer.png" alt="">
+                <div class="content-box-rules">
+                    <div class="content-box-rules-img">
+                        <img src="/images/quantity.jpg" alt="">
+                    </div>
+                    <div class="content-box-rules-detail">
+                        <h3>BẠN LO LẮNG VỀ CHẤT LƯỢNG SẢN PHẨM?</h3>
+                        <span>Xem điều khoản và dịch vụ của chúng tôi ngay bây giờ !</span>
+                        <a class="btn btn-primary" href="support">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div></div>
+
+    </div>
+    <div class="footer">
+        <div class="above">
+            <div id="ab">Sứ mệnh của chúng tôi là mang đến cho <br> bạn những sản phẩm nông sản tươi sạch nhất</div>
+            <div id="ab" style="font-size: 18px;"><i class="bx bxs-phone-call"></i> Hotline <br> +24156795636</div>
+            <div class="btnc btn-info">Contact US <i class="bx bx-log-in-circle"></i></div>
+        </div>
+        <div class="bottom">
+            <div class="t1">
+                <div id="t2">
+                    <h4> About APOST</h4>
+                    <p style="color: yellow;">_________________________</p>
+                    <p>APOTS là dự án ứng dụng blockChain để truy xuất nguồn gốc nông sản <br> &nbsp;và là sàn giao dịch
+                        để nông dân, thương lái và người tiêu dùng giao dịch<br> &nbsp; nông sản với nhau thông qua sàn
+                        giao dịch trực tuyến</p>
+                </div>
+                <div id="t2">
+                    <h4> Thông tin liên lạc</h4>
+                    <p style="color: yellow;">_________________________</p>
+                    <p>. APOTS@gmail.cpm <br> &nbsp; . +254717255460 <br> &nbsp; . Số 111, ông ích khiêm, đà nẵng</p>
+                </div>
+            </div>
+            <h4>@ 2021 APOTS - AGRICULTURAL PRODUCTS ONLINE TRADING SYSTEM. Terms &amp; Conditions</h4>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // function checkform() {
+    //     var arr = document.getElementsByTagName('input');
+    //     // var diachivi = arr[0].value;
+    //     var tensanpham = arr[1].value;
+    //     var thoigiantrong = arr[2].value;
+    //     var phanbon = arr[3].value;
+    //     var soluong = arr[4].value;
+    //     var gia = arr[5].value;
+    //     var mota = arr[6].value;
+    //     var thuonghieu = arr[7].value;
+    //     var loaichungnhan = arr[8].value;
+
+    //     if (tensanpham == "" || thoigiantrong == "" || phanbon == "" || soluong == "" || gia == "" || mota == "" || thuonghieu == "" || loaichungnhan == "") {
+    //         alert("Vui lòng điền đầy đủ thông tin !!");
+    //         return false;
+    //     }
+    //     if (!isNaN(tensanpham)) {//không phải là chữ
+    //         alert("Tên bạn nhập không hợp lệ !!");
+    //         return disconnectMM;
+    //     }
+
+    //     if (isNaN(gia)) {//không phải là số
+    //         alert("Giá bạn nhập không hợp lệ !!");
+    //         return disconnectMM();
+    //     }
+
+    //     if (gia < 0) {
+    //         alert("Giá bạn nhập không hợp lệ")
+    //     }
+    // };
+    function checkNumber() {
+        var x = document.getElementById.value;
+        if (txtSoluong < 0) {
+            alert("Số lượng phải lớn hơn 0");
+            return;
+        }
+
+
+
+    }
+
+
+
+</script>
+
+</html>
